@@ -1,0 +1,18 @@
+{
+  "generator-ui5-app": {
+    "namespace": "lazyloading",
+    "framework": "SAPUI5",
+    "frameworkVersion": "1.131.1",
+    "author": "",
+    "initrepo": true,
+    "appId": "lazyloading",
+    "appURI": "lazyloading",
+    "cdnDomain": "ui5.sap.com",
+    "defaultTheme": "sap_horizon",
+    "qunitCoverageFile": "qunit-coverage-istanbul.js",
+    "gte1_98_0": true,
+    "gte1_104_0": true,
+    "lt1_124_0": false,
+    "setupCompleted": true
+  }
+}
