@@ -68,12 +68,21 @@
 					"pattern": "",
 					"name": "main",
 					"target": "main"
+				},
+				{
+					"pattern": "detail/{productID}",
+					"name": "detail",
+					"target": "DetailPage"
 				}
 			],
 			"targets": {
 				"main": {
 					"viewId": "main",
 					"viewName": "Main"
+				},
+				"DetailPage": {
+					"viewId": "detailPage",
+					"viewName": "Detail"
 				}
 			}
 		}

@@ -1,9 +1,11 @@
-<mvc:View
+<mvc:View xmlns:f="sap.f" 
 	controllerName="lazyloading.controller.Main"
 	displayBlock="true"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
+	xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
+	xmlns:smarttable="sap.ui.comp.smarttable" 
 	core:require="{
 		formatter: 'lazyloading/model/formatter'
 	}">
@@ -11,19 +13,42 @@
 	<Page
 		title="{i18n>appTitle}"
 		id="page">
+		<customHeader>
+		<Toolbar >
+		<Button icon="sap-icon://menu2"></Button>
+		<Avatar src="./images/logo.webp"></Avatar>
+		<MenuButton text="Moyo Tech"></MenuButton>
+		<ToolbarSpacer />
+		<SearchField placeholder="search .." width="auto"></SearchField>
+		<ToolbarSpacer />
+		 <Button icon="sap-icon://customer" type="Transparent"/>
+        <Button icon="sap-icon://feedback" type="Transparent"/>
+        <Button icon="sap-icon://user-settings" type="Transparent"/>
+        <Button icon="sap-icon://log" type="Transparent"/>
+        <Avatar initials="MR"></Avatar> 
+		</Toolbar>
+		</customHeader>
+		<subHeader>
+		<Toolbar >
+		<Link text="Products" emphasized="true"></Link>
+		<Link text="Customers"></Link>
+		<Link text="Suppliers"></Link>
+		<Link text="Categories"></Link>
+		</Toolbar>
+		</subHeader>
 		<content>
-			<IllustratedMessage
-				title="{i18n>appTitle}"
-				illustrationType="sapIllus-SuccessHighFive"
-				enableVerticalResponsiveness="true"
-				description="{i18n>appDescription}">
-				<additionalContent>
-					<Button
-						id="helloButton"
-						text="{formatter: 'formatter.formatValue', path: 'i18n>btnText'}"
-						press="sayHello" />
-				</additionalContent>
-			</IllustratedMessage>
+		<smartfilterbar:SmartFilterBar id="smartFilterBar" entitySet="Products"> 
+		<smartfilterbar:controlConfiguration>
+		<smartfilterbar:ControlConfiguration id="idProduct" label="Product ID" key="ProductID" visibleInAdvancedArea="true"/>
+		<smartfilterbar:ControlConfiguration id="idProductName" label="Product Name" key="ProductName" visibleInAdvancedArea="true"/>
+		<smartfilterbar:ControlConfiguration id="idUnitPrice" label="Unit Price" key="UnitPrice" visibleInAdvancedArea="true"/>
+		</smartfilterbar:controlConfiguration>
+		</smartfilterbar:SmartFilterBar>
+		
+		<smarttable:SmartTable id="idSmartTable" entitySet="Products" smartFilterId="smartFilterBar" enableAutoBinding="true"
+		tableType="ResponsiveTable" initiallyVisibleFields="ProductID,ProductName,UnitPrice,QuantityPerUnit,Discontinued" >
+		<Table id="idTable" selectionChange="handleSelectionChange" mode="SingleSelectMaster"/>
+		</smarttable:SmartTable>
 		</content>
 	</Page>
 

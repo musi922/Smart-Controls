@@ -1,0 +1,23 @@
+<mvc:View 
+	controllerName="lazyloading.controller.Detail"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
+	xmlns:smarttable="sap.ui.comp.smarttable" 
+	core:require="{
+		formatter: 'lazyloading/model/formatter'
+	}">
+
+	<Page id="detailPage" title="{i18n>detailTitle}" navButtonPress="onNavBack">
+     <content>
+        <VBox >
+        <Text id="productName" text=""></Text>
+        <Text id="productId" text=""></Text>
+        <Text id="productPrice" text=""></Text>
+        </VBox>
+        </content>
+    </Page>
+
+</mvc:View>
