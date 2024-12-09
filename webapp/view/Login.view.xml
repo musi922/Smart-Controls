@@ -1,12 +1,16 @@
-<mvc:View 
-    xmlns="sap.m" 
-    xmlns:mvc="sap.ui.core.mvc" 
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
     controllerName="lazyloading.controller.Login">
-    <VBox >
-    <Label text="User Name"/>
-    <Input id="username" placeholder="Enter userName" width="100%"/>
-    <Label text="Password"></Label>
-    <Input id="password" placeholder="Enter your Password" width="100%"/>
-    <Button text="Login" press="onLogin"/>
+    <VBox class="sapUiLargeMargin sapUiContentPadding" width="80%">
+        <Text text="Welcome back" class="sapUiLargeMarginTop sapUiLargeMarginBottom sapUiTitleStyle" />
+        <VBox class="sapUiSmallMarginTop">
+            <Label text="Email address" class="sapUiSmallMarginBottom" />
+            <Input id="username" placeholder="Enter your email" class="sapUiSmallMarginBottom" />
+            <Label text="Password" class="sapUiSmallMarginBottom" />
+            <Input id="password" type="Password" placeholder="Enter your password" class="sapUiSmallMarginBottom" />
         </VBox>
+        <CheckBox text="Remember for 30 days" class="sapUiSmallMarginTop" />
+        <Button text="Sign in" type="Emphasized" press="onLogin" class="sapUiSmallMarginTop" />
+    </VBox>
 </mvc:View>
