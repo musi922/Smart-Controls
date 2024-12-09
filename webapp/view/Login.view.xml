@@ -1,0 +1,12 @@
+<mvc:View 
+    xmlns="sap.m" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    controllerName="lazyloading.controller.Login">
+    <VBox >
+    <Label text="User Name"/>
+    <Input id="username" placeholder="Enter userName" width="100%"/>
+    <Label text="Password"></Label>
+    <Input id="password" placeholder="Enter your Password" width="100%"/>
+    <Button text="Login" press="onLogin"/>
+        </VBox>
+</mvc:View>

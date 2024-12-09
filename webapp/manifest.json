@@ -66,6 +66,11 @@
 			"routes": [
 				{
 					"pattern": "",
+					"name": "login",
+					"target": "login"
+				},
+				{
+					"pattern": "main",
 					"name": "main",
 					"target": "main"
 				},
@@ -76,6 +81,10 @@
 				}
 			],
 			"targets": {
+				"login": {
+					"viewId": "login",
+					"viewName": "Login"
+				},
 				"main": {
 					"viewId": "main",
 					"viewName": "Main"
