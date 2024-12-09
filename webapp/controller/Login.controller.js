@@ -23,8 +23,9 @@ sap.ui.define([
                 return user.username === userName && user.password === password
             })
             if(validUser){
+                localStorage.setItem("loggedIn", true)
                 MessageBox.success("Login Successful")
-                this.getOwnerComponent().getRouter().navTo("main")
+                this.getOwnerComponent().getRouter().navTo("home")
             }
             else{
                 MessageBox.error("Invalid Credentials")

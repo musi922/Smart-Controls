@@ -6,14 +6,15 @@ sap.ui.define(["sap/ui/core/UIComponent", "sap/ui/Device", "./model/models"], fu
 			manifest: "json"
 		},
 		init: function () {
-			// call the base component's init function
-			UIComponent.prototype.init.call(this); // create the views based on the url/hash
-
-			// create the device model
+			UIComponent.prototype.init.call(this);
 			this.setModel(models.createDeviceModel(), "device");
-
-			// create the views based on the url/hash
 			this.getRouter().initialize();
+			if (localStorage.getItem("loggedIn")) {
+				this.getRouter().navTo("home")
+				
+			}else{
+				this.getRouter().navTo("login")
+			}
 		},
 		/**
 		 * This method can be called to determine whether the sapUiSizeCompact or sapUiSizeCozy

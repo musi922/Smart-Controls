@@ -70,8 +70,8 @@
 					"target": "login"
 				},
 				{
-					"pattern": "main",
-					"name": "main",
+					"pattern": "home",
+					"name": "home",
 					"target": "main"
 				},
 				{

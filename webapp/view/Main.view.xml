@@ -24,8 +24,8 @@
 		 <Button icon="sap-icon://customer" type="Transparent"/>
         <Button icon="sap-icon://feedback" type="Transparent"/>
         <Button icon="sap-icon://user-settings" type="Transparent"/>
-        <Button icon="sap-icon://log" type="Transparent"/>
-        <Avatar initials="MR"></Avatar> 
+        <Button icon="sap-icon://log" type="Transparent" press="onLogoutPress"/>
+        <Avatar initials="MR" press="onAvatarPress"></Avatar> 
 		</Toolbar>
 		</customHeader>
 		<subHeader>
@@ -51,6 +51,16 @@
 		</Table>
 		</smarttable:SmartTable>
 		</content>
+
+		<Dialog id="logoutDialog" title="{i18n>logout}">
+		<Text text="Are you sure you want to log out"/>
+		<beginButton>
+		<Button text="Cancel" press="onCloseDialog"></Button>
+		</beginButton>
+		<endButton>
+		<Button text="Logout" press="onLogoutConfirmed"></Button>
+		</endButton>
+		</Dialog>
 	</Page>
 
 </mvc:View>
