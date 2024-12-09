@@ -47,7 +47,8 @@
 		
 		<smarttable:SmartTable id="idSmartTable" entitySet="Products" smartFilterId="smartFilterBar" enableAutoBinding="true"
 		tableType="ResponsiveTable" initiallyVisibleFields="ProductID,ProductName,UnitPrice,QuantityPerUnit,Discontinued" >
-		<Table id="idTable" selectionChange="handleSelectionChange" mode="SingleSelectMaster" growing="true" growingScrollToLoad="true" growingThreshold="18"/>
+		<Table id="idTable" selectionChange="handleSelectionChange" mode="SingleSelectMaster" growing="true" growingScrollToLoad="true" growingThreshold="18">
+		</Table>
 		</smarttable:SmartTable>
 		</content>
 	</Page>
