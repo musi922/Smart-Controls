@@ -40,7 +40,19 @@ sap.ui.define(["./BaseController",
 				localStorage.removeItem("loggedIn")
 				MessageBox.success("You have logged Out")
 				this.getOwnerComponent().getRouter().navTo("login")
+			},
+			onCustomerPress() {
+				const opage = this.byId("page");
+				const oContent = opage.getContent()[0]; 
+				if (oContent) {
+					opage.removeContent(oContent);
+				}
+				sap.ui.core.mvc.XMLView.create({
+					viewName: "lazyloading.view.Cards"
+				}).then((oCardsView) => {
+					opage.addContent(oCardsView);
+				});
 			}
-
+			
 	});
 });

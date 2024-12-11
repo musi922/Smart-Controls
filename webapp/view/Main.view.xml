@@ -31,7 +31,7 @@
 		<subHeader>
 		<Toolbar >
 		<Link text="Products" emphasized="true"></Link>
-		<Link text="Customers"></Link>
+		<Link text="Customers" press="onCustomerPress"></Link>
 		<Link text="Suppliers"></Link>
 		<Link text="Categories"></Link>
 		</Toolbar>
