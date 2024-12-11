@@ -15,52 +15,76 @@
 		id="page">
 		<customHeader>
 		<Toolbar >
-		<Button icon="sap-icon://menu2"></Button>
-		<Avatar src="./images/logo.webp"></Avatar>
-		<MenuButton text="Moyo Tech"></MenuButton>
-		<ToolbarSpacer />
-		<SearchField placeholder="search .." width="auto"></SearchField>
-		<ToolbarSpacer />
-		 <Button icon="sap-icon://customer" type="Transparent"/>
-        <Button icon="sap-icon://feedback" type="Transparent"/>
-        <Button icon="sap-icon://user-settings" type="Transparent"/>
-        <Button icon="sap-icon://log" type="Transparent" press="onLogoutPress"/>
-        <Avatar initials="MR" press="onAvatarPress"></Avatar> 
+			<Button icon="sap-icon://menu2"></Button>
+			<Avatar src="./images/logo.webp"></Avatar>
+			<MenuButton text="Moyo Tech"></MenuButton>
+			<ToolbarSpacer />
+			<SearchField placeholder="search .." width="auto"></SearchField>
+			<ToolbarSpacer />
+			<Button icon="sap-icon://customer" type="Transparent"/>
+			<Button icon="sap-icon://feedback" type="Transparent"/>
+			<Button icon="sap-icon://user-settings" type="Transparent"/>
+			<Button icon="sap-icon://log" type="Transparent" press="onLogoutPress"/>
+			<Avatar initials="MR" press="onAvatarPress"></Avatar> 
 		</Toolbar>
 		</customHeader>
-		<subHeader>
-		<Toolbar >
-		<Link text="Products" emphasized="true"></Link>
-		<Link text="Customers" press="onCustomerPress"></Link>
-		<Link text="Suppliers"></Link>
-		<Link text="Categories"></Link>
-		</Toolbar>
-		</subHeader>
+
 		<content>
-		<smartfilterbar:SmartFilterBar id="smartFilterBar" entitySet="Products"> 
-		<smartfilterbar:controlConfiguration>
-		<smartfilterbar:ControlConfiguration id="idProduct" label="Product ID" key="ProductID" visibleInAdvancedArea="true"/>
-		<smartfilterbar:ControlConfiguration id="idProductName" label="Product Name" key="ProductName" visibleInAdvancedArea="true"/>
-		<smartfilterbar:ControlConfiguration id="idUnitPrice" label="Unit Price" key="UnitPrice" visibleInAdvancedArea="true"/>
-		</smartfilterbar:controlConfiguration>
-		</smartfilterbar:SmartFilterBar>
-		
-		<smarttable:SmartTable id="idSmartTable" entitySet="Products" smartFilterId="smartFilterBar" enableAutoBinding="true"
-		tableType="ResponsiveTable" initiallyVisibleFields="ProductID,ProductName,UnitPrice,QuantityPerUnit,Discontinued" >
-		<Table id="idTable" selectionChange="handleSelectionChange" mode="SingleSelectMaster" growing="true" growingScrollToLoad="true" growingThreshold="18">
-		</Table>
-		</smarttable:SmartTable>
+			<IconTabBar id="mainTabBar" 
+				select="onTabSelect" 
+				selectedKey="{view>/selectedTabKey}">
+				<items>
+					<IconTabFilter 
+						id="productsTab" 
+						text="Products" 
+						key="Products">
+						<smartfilterbar:SmartFilterBar id="smartFilterBar" entitySet="Products"> 
+							<smartfilterbar:controlConfiguration>
+								<smartfilterbar:ControlConfiguration id="idProduct" label="Product ID" key="ProductID" visibleInAdvancedArea="true"/>
+								<smartfilterbar:ControlConfiguration id="idProductName" label="Product Name" key="ProductName" visibleInAdvancedArea="true"/>
+								<smartfilterbar:ControlConfiguration id="idUnitPrice" label="Unit Price" key="UnitPrice" visibleInAdvancedArea="true"/>
+							</smartfilterbar:controlConfiguration>
+						</smartfilterbar:SmartFilterBar>
+						
+						<smarttable:SmartTable id="idSmartTable" entitySet="Products" smartFilterId="smartFilterBar" enableAutoBinding="true"
+						tableType="ResponsiveTable" initiallyVisibleFields="ProductID,ProductName,UnitPrice,QuantityPerUnit,Discontinued" >
+							<Table id="idTable" selectionChange="handleSelectionChange" mode="SingleSelectMaster" growing="true" growingScrollToLoad="true" growingThreshold="18">
+							</Table>
+						</smarttable:SmartTable>
+					</IconTabFilter>
+
+					<IconTabFilter 
+						id="customersTab" 
+						text="Customers" 
+						key="Customers">
+						<!-- Lazy-loaded Customers view will be added dynamically -->
+					</IconTabFilter>
+
+					<IconTabFilter 
+						id="suppliersTab" 
+						text="Suppliers" 
+						key="Suppliers">
+						<!-- Lazy-loaded Suppliers view will be added dynamically -->
+					</IconTabFilter>
+
+					<IconTabFilter 
+						id="categoriesTab" 
+						text="Categories" 
+						key="Categories">
+						<!-- Lazy-loaded Categories view will be added dynamically -->
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
 		</content>
 
 		<Dialog id="logoutDialog" title="{i18n>logout}">
-		<Text text="Are you sure you want to log out"/>
-		<beginButton>
-		<Button text="Cancel" press="onCloseDialog"></Button>
-		</beginButton>
-		<endButton>
-		<Button text="Logout" press="onLogoutConfirmed"></Button>
-		</endButton>
+			<Text text="Are you sure you want to log out"/>
+			<beginButton>
+				<Button text="Cancel" press="onCloseDialog"></Button>
+			</beginButton>
+			<endButton>
+				<Button text="Logout" press="onLogoutConfirmed"></Button>
+			</endButton>
 		</Dialog>
 	</Page>
-
 </mvc:View>

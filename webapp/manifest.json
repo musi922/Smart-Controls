@@ -76,7 +76,7 @@
 					"target": "login"
 				},
 				{
-					"pattern": "home",
+					"pattern": "home:?query:",
 					"name": "home",
 					"target": "main"
 				},
