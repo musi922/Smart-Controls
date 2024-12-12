@@ -63,6 +63,19 @@
 	</f:content>
   </f:Card>
 
- <TimePicker displayFormat="short" value="{time>/currentTime}" />   </HBox>
+ <TimePicker displayFormat="short" value="{time>/currentTime}" /> 
+ <f:GridContainer >
+ <f:layout>
+ <f:GridContainerSettings columns="4" columnSize="80px" gap="16px"/>
+ </f:layout>
+ <f:items>
+ <Button text="item 1"/>
+ <Button text="item 2"/>
+ <Button text="item 3"/>
+ <Button text="item 4"/>
+ <Button text="item 5"/>
+  </f:items>
+ </f:GridContainer>  
+ </HBox>
 
 </mvc:View>
