@@ -1,19 +1,68 @@
-<mvc:View xmlns:microchart="sap.suite.ui.microchart" xmlns:commons="sap.suite.ui.commons" xmlns:tnt="sap.tnt" xmlns:cards="sap.f.cards" xmlns:smartchart="sap.ui.comp.smartchart" xmlns:data="sap.viz.ui5.data" xmlns:viz="sap.viz.ui5.controls" xmlns:f="sap.f"
-    xmlns="sap.m" 
+<mvc:View
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:microchart="sap.suite.ui.microchart"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:tnt="sap.tnt"
+    xmlns:cards="sap.f.cards"
+    xmlns:smartchart="sap.ui.comp.smartchart"
+    xmlns:data="sap.viz.ui5.data"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:f="sap.f"
+    xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
-    controllerName="lazyloading.controller.Main">
- <VBox>
- <FlexBox id="flexBox1" width="20rem" height="10rem" alignItems="Start" justifyContent="SpaceBetween">
- <items>
- <microchart:InteractiveDonutChart id="donutChart" selectionChanged="onSelectionChanged">
- <microchart:segments>
- <microchart:InteractiveDonutChartSegment id="chart1" label="{i18n>Transport}" value="40" displayedValue="40%" color="Error"/>
- <microchart:InteractiveDonutChartSegment id="chart2" label="{i18n>Food}" value="20" displayedValue="20%" color="Critical"/>
- <microchart:InteractiveDonutChartSegment id="chart3" label="{i18n>Water}" value="30" displayedValue="30%" color="Good"/>
- </microchart:segments>
- </microchart:InteractiveDonutChart> 
- </items>
- </FlexBox>
- 
-   </VBox>    
- </mvc:View>
+    controllerName="lazyloading.controller.Suppliers"
+>
+    <VBox>
+        <FlexBox
+            id="flexBox1"
+            width="20rem"
+            height="10rem"
+            alignItems="Start"
+            justifyContent="SpaceBetween"
+        >
+            <items>
+                <microchart:InteractiveDonutChart
+                    id="donutChart"
+                    selectionChanged="onSelectionChanged"
+                >
+                    <microchart:segments>
+                        <microchart:InteractiveDonutChartSegment
+                            id="chart1"
+                            label="{i18n>Transport}"
+                            value="40"
+                            displayedValue="40%"
+                            color="Error"
+                        />
+                        <microchart:InteractiveDonutChartSegment
+                            id="chart2"
+                            label="{i18n>Food}"
+                            value="20"
+                            displayedValue="20%"
+                            color="Critical"
+                        />
+                        <microchart:InteractiveDonutChartSegment
+                            id="chart3"
+                            label="{i18n>Water}"
+                            value="30"
+                            displayedValue="30%"
+                            color="Good"
+                        />
+                    </microchart:segments>
+                </microchart:InteractiveDonutChart>
+            </items>
+        </FlexBox>
+        <HBox>
+            <SearchField
+                id="searchField"
+                placeholder="Search for a place..."
+                width="70%"
+                search="onSearch"
+            />
+        </HBox>
+        <vbm:GeoMap
+            id="geoMap"
+            width="100%"
+            height="500px"
+        />
+    </VBox>
+</mvc:View>
