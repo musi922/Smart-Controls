@@ -23,8 +23,19 @@ sap.ui.define([
                 selectedTabKey: "Products"
             });
             this.getView().setModel(oViewModel, "view");
-        },
 
+            //time picker time
+            let oTimeModel = new JSONModel({
+                currentTime: this._getFormattedTime()
+            })
+            this.getView().setModel(oTimeModel,"time")
+            
+        },
+        _getFormattedTime(){
+            let oDate= new Date()
+            return oDate.toLocaleTimeString()
+                
+        },
         onTabSelect: function(oEvent) {
             const sSelectedKey = oEvent.getParameter("key");
             this.getView().getModel("view").setProperty("/selectedTabKey", sSelectedKey);

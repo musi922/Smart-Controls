@@ -62,6 +62,7 @@
 		</List>
 	</f:content>
   </f:Card>
-   </HBox>
+
+ <TimePicker displayFormat="short" value="{time>/currentTime}" />   </HBox>
 
 </mvc:View>
