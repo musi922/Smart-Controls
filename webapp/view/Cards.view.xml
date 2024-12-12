@@ -32,7 +32,8 @@
 			</CustomListItem>
 		</List>
 	</f:content>
-  </f:Card><f:Card
+  </f:Card>
+  <f:Card
 	class="sapUiMediumMargin"
 	width="300px">
 	<f:header>
