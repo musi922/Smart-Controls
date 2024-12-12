@@ -1,0 +1,6 @@
+<mvc:View xmlns:data="sap.viz.ui5.data" xmlns:viz="sap.viz.ui5.controls" xmlns:f="sap.f"
+    xmlns="sap.m" 
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="lazyloading.controller.Main">
+    <Text text="dkdkdkdk"></Text>
+    </mvc:View>
