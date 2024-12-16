@@ -42,6 +42,10 @@ sap.ui.define(
 					.getModel("view")
 					.setProperty("/selectedTabKey", sSelectedKey);
 			},
+			onOrdersPres(){
+				let oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+				oRouter.navTo("orders");
+			},
 
 			handleSelectionChange: function (oEvent) {
 				let oContext = oEvent

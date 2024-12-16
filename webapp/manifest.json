@@ -84,6 +84,11 @@
 					"pattern": "detail/{productID}",
 					"name": "detail",
 					"target": "DetailPage"
+				},
+				{
+					"pattern": "orders",
+					"name": "orders",
+					"target": "OrdersPage"
 				}
 			],
 			"targets": {
@@ -98,6 +103,10 @@
 				"DetailPage": {
 					"viewId": "detailPage",
 					"viewName": "Detail"
+				},
+				"OrdersPage": {	
+					"viewId": "ordersPage",
+					"viewName": "Orders"
 				}
 			}
 		}

@@ -18,6 +18,8 @@
                 <MenuButton text="Moyo Tech"/>
                 <ToolbarSpacer/>
                 <SearchField placeholder="search .." width="auto"/>
+                 <ToolbarSpacer/>
+                 <Link text="Orders" press="onOrdersPres"/>
                 <ToolbarSpacer/>
                 <Button icon="sap-icon://customer" type="Transparent"/>
                 <Button icon="sap-icon://feedback" type="Transparent"/>
@@ -57,8 +59,10 @@
 
                     <IconTabFilter id="categoriesTab" text="Categories" key="Categories">
                     </IconTabFilter>
+                    
                 </items>
             </IconTabBar>
+            
         </content>
 
         <Dialog id="logoutDialog" title="{i18n>logout}">
