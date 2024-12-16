@@ -22,8 +22,8 @@ sap.ui.define([
             this.getView().byId("orderTable").getBinding("items").filter(oFilter);
 
         },
-        onSearchOrders: function (oEvent) {
-            let query = oEvent.getParameter("query");
+        onLiveSearch: function(oEvent) {
+            let query = oEvent.getParameter("newValue");
             let list = this.byId("orderTable");
             let binding = list.getBinding("items");
             
@@ -47,6 +47,7 @@ sap.ui.define([
                     );
                 }
             }
+            
             binding.filter(aFilters);
         }
         

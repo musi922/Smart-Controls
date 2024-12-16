@@ -9,7 +9,7 @@
                 <content>
                     <Title text="Orders Master Detail Page" />
                     <ToolbarSpacer />
-                    <SearchField placeholder="Search Orders" width="50%" search="onSearchOrders"></SearchField>
+                    <SearchField placeholder="Search Orders" width="50%" id="searchLive" liveChange="onLiveSearch"></SearchField>
                     <ToolbarSpacer />
 
                 </content>

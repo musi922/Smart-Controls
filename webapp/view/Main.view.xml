@@ -17,7 +17,7 @@
                 <Avatar src="./images/logo.webp"/>
                 <MenuButton text="Moyo Tech"/>
                 <ToolbarSpacer/>
-                <SearchField placeholder="search .." width="auto"/>
+                <SearchField placeholder="search .." width="auto" id="mainSearch" liveChange="onLiveSearch"/>
                  <ToolbarSpacer/>
                  <Link text="Orders" press="onOrdersPres"/>
                 <ToolbarSpacer/>
