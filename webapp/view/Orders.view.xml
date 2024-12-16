@@ -14,14 +14,47 @@
             </OverflowToolbar>
         </customHeader>
         <content>
-        <SplitContainer >
+        <SplitContainer initialMaster="master" initialDetail="orderDetail">
         <detailPages>
+        <Page id="orderDetail" title="Order Details">
+        <Table id="orderTable" items="{/Order_Details}" growing="true" growingScrollToLoad="true" growingThreshold="18">
+        <columns>
+        <Column >
+        <Text text="Order ID"/>
+        </Column>
+        <Column >
+        <Text text="Product ID"/>
+        </Column>
+        <Column >
+        <Text text="Unit Price"/>
+        </Column>
+        <Column >
+        <Text text="Quantity"/>
+        </Column>
+        <Column >
+        <Text text="Discount"/>
+        </Column>
+        </columns>
+        <items>
+        <ColumnListItem >
+        <cells>
+        <Text text="{OrderID}"/>
+        <Text text="{ProductID}"/>
+        <Text text="{UnitPrice}"/>
+        <Text text="{Quantity}"/>
+        <Text text="{Discount}"/>
+        </cells>
+        </ColumnListItem>
+        </items>
+        </Table>
+        
+        </Page>
         </detailPages>
         <masterPages>
         <Page id="master" title="Orders Master">
-        <List id="ordersList" items="{/Orders}">
+        <List id="ordersList" items="{/Orders}" itemPress="onListPress">
         <items>
-        <StandardListItem title="{OrderID}"/>
+        <StandardListItem title="{OrderID}" type="Navigation"/>
         </items>
         </List>
         </Page>
