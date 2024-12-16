@@ -17,7 +17,7 @@
         <SplitContainer initialMaster="master" initialDetail="orderDetail">
         <detailPages>
         <Page id="orderDetail" title="Order Details">
-        <Table id="orderTable" items="{/Order_Details}" growing="true" growingScrollToLoad="true" growingThreshold="18">
+        <Table id="orderTable" items="{/Order_Details}" growing="true" growingScrollToLoad="true" growingThreshold="25">
         <columns>
         <Column >
         <Text text="Order ID"/>
