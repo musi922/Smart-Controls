@@ -7,59 +7,67 @@
         <customHeader>
             <OverflowToolbar>
                 <content>
-                    <ToolbarSpacer />
                     <Title text="Orders Master Detail Page" />
                     <ToolbarSpacer />
+                    <SearchField placeholder="Search Orders" width="50%" search="onSearchOrders"></SearchField>
+                    <ToolbarSpacer />
+
                 </content>
             </OverflowToolbar>
         </customHeader>
         <content>
-        <SplitContainer initialMaster="master" initialDetail="orderDetail">
-        <detailPages>
-        <Page id="orderDetail" title="Order Details">
-        <Table id="orderTable" items="{/Order_Details}" growing="true" growingScrollToLoad="true" growingThreshold="25">
-        <columns>
-        <Column >
-        <Text text="Order ID"/>
-        </Column>
-        <Column >
-        <Text text="Product ID"/>
-        </Column>
-        <Column >
-        <Text text="Unit Price"/>
-        </Column>
-        <Column >
-        <Text text="Quantity"/>
-        </Column>
-        <Column >
-        <Text text="Discount"/>
-        </Column>
-        </columns>
-        <items>
-        <ColumnListItem >
-        <cells>
-        <Text text="{OrderID}"/>
-        <Text text="{ProductID}"/>
-        <Text text="{UnitPrice}"/>
-        <Text text="{Quantity}"/>
-        <Text text="{Discount}"/>
-        </cells>
-        </ColumnListItem>
-        </items>
-        </Table>
-        
-        </Page>
-        </detailPages>
-        <masterPages>
-        <Page id="master" title="Orders Master">
-        <List id="ordersList" items="{/Orders}" itemPress="onListPress">
-        <items>
-        <StandardListItem title="{OrderID}" type="Navigation"/>
-        </items>
-        </List>
-        </Page>
-        </masterPages>
-        </SplitContainer>
+            <SplitContainer initialMaster="master" initialDetail="orderDetail">
+                <detailPages>
+                    <Page id="orderDetail" title="Order Details">
+                        <Table id="orderTable" items="{/Order_Details}" growing="true" growingScrollToLoad="true" growingThreshold="25">
+                            <columns>
+                                <Column>
+                                    <Text text="Order ID"/>
+                                </Column>
+                                <Column>
+                                    <Text text="Product ID"/>
+                                </Column>
+                                <Column>
+                                    <Text text="Unit Price"/>
+                                </Column>
+                                <Column>
+                                    <Text text="Quantity"/>
+                                </Column>
+                                <Column>
+                                    <Text text="Discount"/>
+                                </Column>
+                                <Column>
+                                    <Text text="Actions"/>
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text text="{OrderID}"/>
+                                        <Text text="{ProductID}"/>
+                                        <Text text="{UnitPrice}"/>
+                                        <Text text="{Quantity}"/>
+                                        <Text text="{Discount}"/>
+                                        <HBox class="sapUiSmallPadding">
+                                            <Button icon="sap-icon://edit" press="onShowEditingDialog" text="Edit"></Button>
+                                            <Button icon="sap-icon://delete" press="onDelete" text="Delete"></Button>
+                                        </HBox>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </Page>
+                </detailPages>
+                <masterPages>
+                    <Page id="master" title="Orders Master">
+                        <List id="ordersList" items="{/Orders}" itemPress="onListPress">
+                            <items>
+                                <StandardListItem title="{OrderID}" type="Navigation"/>
+                            </items>
+                        </List>
+                    </Page>
+                </masterPages>
+            </SplitContainer>
         </content>
     </Page>
 </mvc:View>
