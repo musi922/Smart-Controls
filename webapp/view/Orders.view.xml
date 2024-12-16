@@ -1,9 +1,32 @@
-<mvc:View 
-    xmlns="sap.m" 
-    xmlns:mvc="sap.ui.core.mvc" 
-    controllerName="lazyloading.controller.Orders">
-    <Panel width="auto">
-        <headerToolbar></headerToolbar>
-        <content></content>
-    </Panel>
+<mvc:View
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="lazyloading.controller.Orders"
+>
+    <Page id="ordersPage">
+        <customHeader>
+            <OverflowToolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Title text="Orders Master Detail Page" />
+                    <ToolbarSpacer />
+                </content>
+            </OverflowToolbar>
+        </customHeader>
+        <content>
+        <SplitContainer >
+        <detailPages>
+        </detailPages>
+        <masterPages>
+        <Page id="master" title="Orders Master">
+        <List id="ordersList" items="{/Orders}">
+        <items>
+        <StandardListItem title="{OrderID}"/>
+        </items>
+        </List>
+        </Page>
+        </masterPages>
+        </SplitContainer>
+        </content>
+    </Page>
 </mvc:View>
