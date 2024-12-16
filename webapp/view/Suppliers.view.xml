@@ -55,7 +55,6 @@
             <SearchField
                 id="searchField"
                 placeholder="Search for a place..."
-                width="70%"
                 search="onSearch"
             />
         </HBox>

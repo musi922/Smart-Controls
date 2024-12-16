@@ -14,8 +14,7 @@ sap.ui.define([
             let oModel = new ODataModel("http://localhost:5000/odata", {
                 maxDataServiceVersion: "3.0"
             });
-            this.getView().setModel(oModel);
-           
+            this.getView().setModel(oModel)
             
         },
         
