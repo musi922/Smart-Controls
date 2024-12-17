@@ -32,6 +32,13 @@ sap.ui.define(
 				});
 				this.getView().setModel(oTimeModel, "time");
 			},
+			onCreateProductPress(){
+				let oDialog = this.byId("createProduct");
+				oDialog.open();
+			},
+			onCloseProductDialog(){
+				this.byId("createProductDialog").close();
+			},
 			_getFormattedTime() {
 				let oDate = new Date();
 				return oDate.toLocaleTimeString();
@@ -71,6 +78,12 @@ sap.ui.define(
 				MessageBox.success("You have logged Out");
 				this.getOwnerComponent().getRouter().navTo("login");
 			},
+			onCreateProduct(){
+				let productID = this.getView().byId("productIdInput").getValue();
+				let productName = this.getView().byId("productNameInput").getValue();
+				let unitPrice = this.getView().byId("productPriceInput").getValue();
+				let quantity = this.getView().byId("productQuantityInput").getValue();
+			}
 		});
 	}
 );

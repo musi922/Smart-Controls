@@ -1,4 +1,4 @@
-<mvc:View xmlns:f="sap.f"
+<mvc:View xmlns:form="sap.ui.layout.form" xmlns:f="sap.f"
           controllerName="lazyloading.controller.Main"
           displayBlock="true"
           xmlns="sap.m"
@@ -36,6 +36,7 @@
                 <items>
                     <IconTabFilter id="productsTab" text="Products" key="Products">
                     <Toolbar >
+                    <ToolbarSpacer/>
                     <Button text="Create Product" press="onCreateProductPress"></Button>
                     </Toolbar>
                         <smartfilterbar:SmartFilterBar id="smartFilterBar" entitySet="Products">
@@ -78,8 +79,9 @@
             </endButton>
         </Dialog>
 
-        <Dialog id="createProduct" title="Create a Product">
+        <Dialog id="createProduct" title="Create a Product" class="sapUiLargePadding">
         <VBox >
+        <form:SimpleForm >
         <Label text="Product Id"/>
         <Input id="productIdInput"/>
         <Label text="Product Name"/>
@@ -88,12 +90,13 @@
         <Input id="productPriceInput"/>
         <Label text="Quantity Per Unit"/>
         <Input id="productQuantityInput"/>
+        </form:SimpleForm>
         </VBox>
         <beginButton>
-        <Button text="Cancel" press="onCloseProductDialog"/>
+        <Button text="Cancel" press="onCloseProductDialog" />
         </beginButton>
         <endButton>
-        <Button text="Create" press="onCreateProduct"/>
+        <Button text="Create" press="onCreateProduct" type="Emphasized"/>
         </endButton>
         </Dialog>
     </Page>
