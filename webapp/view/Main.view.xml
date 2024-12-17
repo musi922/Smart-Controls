@@ -35,6 +35,9 @@
                         selectedKey="{view>/selectedTabKey}">
                 <items>
                     <IconTabFilter id="productsTab" text="Products" key="Products">
+                    <Toolbar >
+                    <Button text="Create Product" press="onCreateProductPress"></Button>
+                    </Toolbar>
                         <smartfilterbar:SmartFilterBar id="smartFilterBar" entitySet="Products">
                             <smartfilterbar:controlConfiguration>
                                 <smartfilterbar:ControlConfiguration id="idProduct" label="Product ID" key="ProductID" visibleInAdvancedArea="true"/>
@@ -73,6 +76,25 @@
             <endButton>
                 <Button text="Logout" press="onLogoutConfirmed"/>
             </endButton>
+        </Dialog>
+
+        <Dialog id="createProduct" title="Create a Product">
+        <VBox >
+        <Label text="Product Id"/>
+        <Input id="productIdInput"/>
+        <Label text="Product Name"/>
+        <Input id="productNameInput"/>
+        <Label text="Product Price"/>
+        <Input id="productPriceInput"/>
+        <Label text="Quantity Per Unit"/>
+        <Input id="productQuantityInput"/>
+        </VBox>
+        <beginButton>
+        <Button text="Cancel" press="onCloseProductDialog"/>
+        </beginButton>
+        <endButton>
+        <Button text="Create" press="onCreateProduct"/>
+        </endButton>
         </Dialog>
     </Page>
 </mvc:View>
