@@ -86,14 +86,12 @@ sap.ui.define(
 			onEditPress: function (oEvent) {
 				const oContext = oEvent.getSource().getBindingContext().getObject();
 			
-				// Open the dialog and populate fields with the selected product's data
 				const oDialog = this.byId("createProduct");
 				this.byId("productIdInput").setValue(oContext.ID);
 				this.byId("productNameInput").setValue(oContext.Name);
-				this.byId("productPriceInput").setValue(oContext.Description); // Adjust as needed for your fields
+				this.byId("productPriceInput").setValue(oContext.Description);
 				this.byId("productQuantityInput").setValue(oContext.Price);
 			
-				// Store the context for update operation
 				this._editContextPath = oEvent.getSource().getBindingContext().getPath();
 				oDialog.open();
 			},
@@ -107,9 +105,7 @@ sap.ui.define(
 			
 				const newProduct = { ID, Name, Description, Price };
 			
-				// Check if we're in "edit" mode or "create" mode
 				if (this._editContextPath) {
-					// Update existing product
 					oModel.update(this._editContextPath, newProduct, {
 						success: () => {
 							MessageBox.success("Product updated successfully");
@@ -122,7 +118,6 @@ sap.ui.define(
 						}
 					});
 				} else {
-					// Create new product
 					oModel.create("/Products", newProduct, {
 						success: () => {
 							MessageBox.success("Product created successfully");
