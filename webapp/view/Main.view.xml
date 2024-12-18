@@ -97,25 +97,33 @@
             </endButton>
         </Dialog>
 
-        <Dialog id="createProduct" title="Create a Product" class="sapUiLargePadding">
-        <VBox >
-        <form:SimpleForm >
-        <Label text="Product Id"/>
-        <Input id="productIdInput"/>
-        <Label text="Product Name"/>
-        <Input id="productNameInput"/>
-        <Label text="Descrition"/>
-        <Input id="productPriceInput"/>
-        <Label text="Price"/>
-        <Input id="productQuantityInput"/>
-        </form:SimpleForm>
-        </VBox>
-        <beginButton>
-        <Button text="Cancel" press="onCloseProductDialog" />
-        </beginButton>
-        <endButton>
+<Dialog id="createProduct" title="Create a Product" class="sapUiLargePadding">
+    <VBox>
+       <form:SimpleForm>
+    <Label text="Product Id"/>
+    <Input id="productIdInput" required="true" valueState="None" valueStateText="Please enter a product ID"/>
+    
+    <Label text="Product Name"/>
+    <Input id="productNameInput" required="true" valueState="None" valueStateText="Please enter a product name"/>
+    
+    <Label text="Description"/>
+    <Input id="productDescriptionInput" required="true" valueState="None" valueStateText="Please enter a description"/>
+    
+    <Label text="Price"/>
+    <Input id="productPriceInput" type="Number" required="true" valueState="None" valueStateText="Please enter a valid price"/>
+    
+    <Label text="Quantity"/>
+    <Input id="productQuantityInput" type="Number" required="true" valueState="None" valueStateText="Please enter a valid quantity"/>
+      </form:SimpleForm>
+
+    </VBox>
+    <beginButton>
+        <Button text="Cancel" press="onCloseProductDialog"/>
+    </beginButton>
+    <endButton>
         <Button text="Create" press="onCreateProduct" type="Emphasized"/>
-        </endButton>
-        </Dialog>
+    </endButton>
+</Dialog>
+
     </Page>
 </mvc:View>

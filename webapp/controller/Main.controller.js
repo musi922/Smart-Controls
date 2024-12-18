@@ -102,6 +102,12 @@ sap.ui.define(
 				const Name = this.byId("productNameInput").getValue();
 				const Description = this.byId("productPriceInput").getValue();
 				const Price = this.byId("productQuantityInput").getValue();
+				const Quantity = this.byId("productQuantityInput").getValue();
+
+				if (!ID || !Name || !Description || Price <= 0 || Quantity <= 0) {
+					MessageBox.error("Please fill in all required fields with valid values.");
+					return;
+				}
 			
 				const newProduct = { ID, Name, Description, Price };
 			
