@@ -83,35 +83,79 @@ sap.ui.define(
 				MessageBox.success("You have logged Out");
 				this.getOwnerComponent().getRouter().navTo("login");
 			},
-			onCreateProduct(){
-				let ID = this.getView().byId("productIdInput").getValue();
-				let Name = this.getView().byId("productNameInput").getValue();
-				let Description = this.getView().byId("productPriceInput").getValue();
-				let Price = this.getView().byId("productQuantityInput").getValue();
-
-				let oModel = this.getView().getModel();
-				let newProduct = {
-					ID: ID,
-					Name: Name,
-					Description: Description,
-					Price: Price
+			onEditPress: function (oEvent) {
+				const oContext = oEvent.getSource().getBindingContext().getObject();
+			
+				// Open the dialog and populate fields with the selected product's data
+				const oDialog = this.byId("createProduct");
+				this.byId("productIdInput").setValue(oContext.ID);
+				this.byId("productNameInput").setValue(oContext.Name);
+				this.byId("productPriceInput").setValue(oContext.Description); // Adjust as needed for your fields
+				this.byId("productQuantityInput").setValue(oContext.Price);
+			
+				// Store the context for update operation
+				this._editContextPath = oEvent.getSource().getBindingContext().getPath();
+				oDialog.open();
+			},
+			
+			onCreateProduct: function () {
+				const oModel = this.getView().getModel();
+				const ID = this.byId("productIdInput").getValue();
+				const Name = this.byId("productNameInput").getValue();
+				const Description = this.byId("productPriceInput").getValue();
+				const Price = this.byId("productQuantityInput").getValue();
+			
+				const newProduct = { ID, Name, Description, Price };
+			
+				// Check if we're in "edit" mode or "create" mode
+				if (this._editContextPath) {
+					// Update existing product
+					oModel.update(this._editContextPath, newProduct, {
+						success: () => {
+							MessageBox.success("Product updated successfully");
+							this.byId("createProduct").close();
+							this._editContextPath = null;
+						},
+						error: (error) => {
+							MessageBox.error("Error updating product");
+							console.error(error);
+						}
+					});
+				} else {
+					// Create new product
+					oModel.create("/Products", newProduct, {
+						success: () => {
+							MessageBox.success("Product created successfully");
+							this.byId("createProduct").close();
+						},
+						error: (error) => {
+							MessageBox.error("Error creating product");
+							console.error(error);
+						}
+					});
 				}
-				oModel.create("/Products", newProduct, {
-					success: (data) => {
-						console.log(data);
-						this.byId("productIdInput").setValue("");
-						this.byId("productNameInput").setValue("");
-						this.byId("productPriceInput").setValue("");
-						this.byId("productQuantityInput").setValue("");
-						
-						this.byId("createProduct").close();
-					},
-					error: (error) => {
-						console.error(error);
+			},
+			onDeletePress: function (oEvent) {
+				const oContextPath = oEvent.getSource().getBindingContext().getPath();
+				const oModel = this.getView().getModel();
+			
+				MessageBox.confirm("Are you sure you want to delete this product?", {
+					actions: [MessageBox.Action.YES, MessageBox.Action.NO],
+					onClose: (sAction) => {
+						if (sAction === MessageBox.Action.YES) {
+							oModel.remove(oContextPath, {
+								success: () => MessageBox.success("Product deleted successfully"),
+								error: (error) => {
+									MessageBox.error("Error deleting product");
+									console.error(error);
+								}
+							});
+						}
 					}
 				});
-				MessageBox.success("Product Created Successfully");
-			}
+			},
+			
+			
 		});
 	}
 );
