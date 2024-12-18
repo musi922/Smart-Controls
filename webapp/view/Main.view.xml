@@ -39,18 +39,22 @@
                     <ToolbarSpacer/>
                     <Button text="Create Product" press="onCreateProductPress"></Button>
                     </Toolbar>
-                        <smartfilterbar:SmartFilterBar id="smartFilterBar" entitySet="Products">
-                            <smartfilterbar:controlConfiguration>
-                                <smartfilterbar:ControlConfiguration id="idProduct" label="ID" key="ID" visibleInAdvancedArea="true"/>
-                                <smartfilterbar:ControlConfiguration id="idProductName" label="Name" key="Name" visibleInAdvancedArea="true"/>
-                                <smartfilterbar:ControlConfiguration id="idDescription" label="Description" key="Description" visibleInAdvancedArea="true"/>
-                            </smartfilterbar:controlConfiguration>
-                        </smartfilterbar:SmartFilterBar>
-
-                       <smarttable:SmartTable id="idSmartTable" entitySet="Products" smartFilterId="smartFilterBar" enableAutoBinding="true"
-                       tableType="ResponsiveTable" initiallyVisibleFields="ID,Name,Description">
-    <Table id="idTable" selectionChange="handleSelectionChange" mode="SingleSelectMaster" growing="true" growingScrollToLoad="true" growingThreshold="18">
+                            
+    <Table id="idTable" items="{/Products}" selectionChange="handleSelectionChange" mode="SingleSelectMaster" growing="true" growingScrollToLoad="true" growingThreshold="18">
         <columns>
+            <Column>
+                <Text text="ID"/>
+            </Column>
+            <Column>
+                <Text text="Name"/>
+            </Column>
+            <Column>
+                <Text text="Description"/>
+            </Column>
+            <Column>
+                <Text text="Price"/>
+            </Column>
+           
             <Column>
                 <Text text="Actions"/>
             </Column>
@@ -58,6 +62,10 @@
         <items>
             <ColumnListItem>
                 <cells>
+                <Text text="{ID}"/>
+                <Text text="{Name}"/>
+                <Text text="{Description}"/>
+                <Text text="{Price}"/>
 
                     <HBox>
                         <Button text="Edit" type="Emphasized" press="onEditPress" />
@@ -67,8 +75,6 @@
             </ColumnListItem>
         </items>
     </Table>
-</smarttable:SmartTable>
-
                     </IconTabFilter>
 
                     <IconTabFilter id="customersTab" text="Customers" key="Customers">
@@ -112,8 +118,7 @@
     <Label text="Price"/>
     <Input id="productPriceInput" type="Number" required="true" valueState="None" valueStateText="Please enter a valid price"/>
     
-    <Label text="Quantity"/>
-    <Input id="productQuantityInput" type="Number" required="true" valueState="None" valueStateText="Please enter a valid quantity"/>
+   
       </form:SimpleForm>
 
     </VBox>

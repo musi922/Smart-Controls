@@ -4,8 +4,11 @@ sap.ui.define(
 		"sap/ui/model/odata/v2/ODataModel",
 		"sap/m/MessageBox",
 		"sap/ui/model/json/JSONModel",
+		"sap/ui/model/Filter",
+		"sap/ui/model/FilterOperator",
+		"sap/ui/model/FilterType",
 	],
-	function (BaseController, ODataModel, MessageBox, JSONModel) {
+	function (BaseController, ODataModel, MessageBox, JSONModel,Filter, FilterOperator, FilterType) {
 		"use strict";
 
 		return BaseController.extend("lazyloading.controller.Main", {
@@ -77,6 +80,42 @@ sap.ui.define(
 				let oDialog = this.byId("createProduct");
 				oDialog.close();
 			},
+			
+			onLiveSearch: function(oEvent) {
+				let query = oEvent.getParameter("newValue");
+				let list = this.byId("idTable");
+				let binding = list.getBinding("items");
+				
+				let aFilters = [];
+				
+				if (query) {
+					let queryNumber = parseInt(query);
+					
+					if (!isNaN(queryNumber)) {
+						aFilters.push(
+							new Filter({
+								filters: [
+									new Filter("ID", FilterOperator.EQ, queryNumber),
+									new Filter("Price", FilterOperator.EQ, queryNumber),
+								],
+								and: false
+							})
+						);
+					} else {
+						aFilters.push(
+							new Filter({
+								filters: [
+									new Filter("Name", FilterOperator.Contains, query),
+									new Filter("Description", FilterOperator.Contains, query),
+								],
+								and: false
+							})
+						);
+					}
+				}
+				
+				binding.filter(aFilters);
+			},
 
 			onLogoutConfirmed: function () {
 				localStorage.removeItem("loggedIn");
@@ -90,21 +129,20 @@ sap.ui.define(
 				this.byId("productIdInput").setValue(oContext.ID);
 				this.byId("productNameInput").setValue(oContext.Name);
 				this.byId("productPriceInput").setValue(oContext.Description);
-				this.byId("productQuantityInput").setValue(oContext.Price);
 			
 				this._editContextPath = oEvent.getSource().getBindingContext().getPath();
 				oDialog.open();
 			},
+
 			
 			onCreateProduct: function () {
 				const oModel = this.getView().getModel();
 				const ID = this.byId("productIdInput").getValue();
 				const Name = this.byId("productNameInput").getValue();
-				const Description = this.byId("productPriceInput").getValue();
-				const Price = this.byId("productQuantityInput").getValue();
-				const Quantity = this.byId("productQuantityInput").getValue();
+				const Description = this.byId("productDescriptionInput").getValue();
+				const Price = this.byId("productPriceInput").getValue();
 
-				if (!ID || !Name || !Description || Price <= 0 || Quantity <= 0) {
+				if (!ID || !Name || !Description || Price <= 0 ) {
 					MessageBox.error("Please fill in all required fields with valid values.");
 					return;
 				}
