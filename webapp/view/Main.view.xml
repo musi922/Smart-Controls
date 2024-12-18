@@ -58,13 +58,11 @@
         <items>
             <ColumnListItem>
                 <cells>
-                    <Text text="{ID}" />
-                    <Text text="{Name}" />
-                    <Text text="{Description}" />
-                    <FlexBox class="sapUiSmallPadding">
+
+                    <HBox>
                         <Button text="Edit" type="Emphasized" press="onEditPress" />
                         <Button text="Delete" type="Negative" press="onDeletePress" />
-                    </FlexBox>
+                    </HBox>
                 </cells>
             </ColumnListItem>
         </items>
