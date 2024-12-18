@@ -35,9 +35,9 @@ sap.ui.define([
                     console.log(data);
                     
         
-                    this.byId("productId").setText(`Product ID: ${data.ProductID}`);
-                    this.byId("productName").setText(`Name: ${data.ProductName}`);
-                    this.byId("productPrice").setText(`Price: ${data.UnitPrice}`);
+                    this.byId("productId").setText(`Product ID: ${data.ID}`);
+                    this.byId("productName").setText(`Name: ${data.Name}`);
+                    this.byId("productPrice").setText(`Description: ${data.Description}`);
                 },
                 error: (error) => {
                     console.error("Error fetching product:", error);

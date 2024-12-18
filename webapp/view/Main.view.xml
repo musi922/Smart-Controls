@@ -41,16 +41,36 @@
                     </Toolbar>
                         <smartfilterbar:SmartFilterBar id="smartFilterBar" entitySet="Products">
                             <smartfilterbar:controlConfiguration>
-                                <smartfilterbar:ControlConfiguration id="idProduct" label="Product ID" key="ProductID" visibleInAdvancedArea="true"/>
-                                <smartfilterbar:ControlConfiguration id="idProductName" label="Product Name" key="ProductName" visibleInAdvancedArea="true"/>
-                                <smartfilterbar:ControlConfiguration id="idUnitPrice" label="Unit Price" key="UnitPrice" visibleInAdvancedArea="true"/>
+                                <smartfilterbar:ControlConfiguration id="idProduct" label="ID" key="ID" visibleInAdvancedArea="true"/>
+                                <smartfilterbar:ControlConfiguration id="idProductName" label="Name" key="Name" visibleInAdvancedArea="true"/>
+                                <smartfilterbar:ControlConfiguration id="idDescription" label="Description" key="Description" visibleInAdvancedArea="true"/>
                             </smartfilterbar:controlConfiguration>
                         </smartfilterbar:SmartFilterBar>
 
-                        <smarttable:SmartTable id="idSmartTable" entitySet="Products" smartFilterId="smartFilterBar" enableAutoBinding="true"
-                                               tableType="ResponsiveTable" initiallyVisibleFields="ProductID,ProductName,UnitPrice,QuantityPerUnit,Discontinued">
-                            <Table id="idTable" selectionChange="handleSelectionChange" mode="SingleSelectMaster" growing="true" growingScrollToLoad="true" growingThreshold="18"/>
-                        </smarttable:SmartTable>
+                       <smarttable:SmartTable id="idSmartTable" entitySet="Products" smartFilterId="smartFilterBar" enableAutoBinding="true"
+                       tableType="ResponsiveTable" initiallyVisibleFields="ID,Name,Description">
+    <Table id="idTable" selectionChange="handleSelectionChange" mode="SingleSelectMaster" growing="true" growingScrollToLoad="true" growingThreshold="18">
+        <columns>
+            <Column>
+                <Text text="Actions"/>
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <Text text="{ID}" />
+                    <Text text="{Name}" />
+                    <Text text="{Description}" />
+                    <FlexBox class="sapUiSmallPadding">
+                        <Button text="Edit" type="Emphasized" press="onEditPress" />
+                        <Button text="Delete" type="Negative" press="onDeletePress" />
+                    </FlexBox>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</smarttable:SmartTable>
+
                     </IconTabFilter>
 
                     <IconTabFilter id="customersTab" text="Customers" key="Customers">
@@ -86,9 +106,9 @@
         <Input id="productIdInput"/>
         <Label text="Product Name"/>
         <Input id="productNameInput"/>
-        <Label text="Product Price"/>
+        <Label text="Descrition"/>
         <Input id="productPriceInput"/>
-        <Label text="Quantity Per Unit"/>
+        <Label text="Price"/>
         <Input id="productQuantityInput"/>
         </form:SimpleForm>
         </VBox>

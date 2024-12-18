@@ -14,19 +14,20 @@ sap.ui.define(
 					defaultBindingMode: "TwoWay",
 					useBatch: false,
 					headers: {
-						"Content-Type": "application/atom+xml",
+					  "Content-Type": "application/atom+xml",
 					},
 					json: false,
 					maxDataServiceVersion: "3.0",
-				});
-				this.getView().setModel(oModel);
+				  });
+				this.getView().setModel(oModel);	
 
 				let oViewModel = new JSONModel({
 					selectedTabKey: "Products",
 				});
 				this.getView().setModel(oViewModel, "view");
+				console.log(oViewModel.getData());
+				
 
-				//time picker time
 				let oTimeModel = new JSONModel({
 					currentTime: this._getFormattedTime(),
 				});
@@ -60,7 +61,7 @@ sap.ui.define(
 					.getBindingContext()
 					.getObject();
 				let oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-				oRouter.navTo("detail", { productID: oContext.ProductID });
+				oRouter.navTo("detail", { productID: oContext.ID });
 			},
 
 			onAvatarPress: function () {
@@ -72,6 +73,10 @@ sap.ui.define(
 				let oDialog = this.byId("logoutDialog");
 				oDialog.close();
 			},
+			onCloseProductDialog: function () {
+				let oDialog = this.byId("createProduct");
+				oDialog.close();
+			},
 
 			onLogoutConfirmed: function () {
 				localStorage.removeItem("loggedIn");
@@ -79,10 +84,33 @@ sap.ui.define(
 				this.getOwnerComponent().getRouter().navTo("login");
 			},
 			onCreateProduct(){
-				let productID = this.getView().byId("productIdInput").getValue();
-				let productName = this.getView().byId("productNameInput").getValue();
-				let unitPrice = this.getView().byId("productPriceInput").getValue();
-				let quantity = this.getView().byId("productQuantityInput").getValue();
+				let ID = this.getView().byId("productIdInput").getValue();
+				let Name = this.getView().byId("productNameInput").getValue();
+				let Description = this.getView().byId("productPriceInput").getValue();
+				let Price = this.getView().byId("productQuantityInput").getValue();
+
+				let oModel = this.getView().getModel();
+				let newProduct = {
+					ID: ID,
+					Name: Name,
+					Description: Description,
+					Price: Price
+				}
+				oModel.create("/Products", newProduct, {
+					success: (data) => {
+						console.log(data);
+						this.byId("productIdInput").setValue("");
+						this.byId("productNameInput").setValue("");
+						this.byId("productPriceInput").setValue("");
+						this.byId("productQuantityInput").setValue("");
+						
+						this.byId("createProduct").close();
+					},
+					error: (error) => {
+						console.error(error);
+					}
+				});
+				MessageBox.success("Product Created Successfully");
 			}
 		});
 	}
