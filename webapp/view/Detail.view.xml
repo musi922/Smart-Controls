@@ -10,7 +10,7 @@
 		formatter: 'lazyloading/model/formatter'
 	}">
 
-	<Page id="detailPage" title="{i18n>detailTitle}" navButtonPress="onNavBack">
+	<Page id="detailPage" title="{i18n>detailTitle}" showNavButton="true" navButtonPress="onNavBack">
      <content>
         <VBox >
         <Text id="productName" text=""></Text>
