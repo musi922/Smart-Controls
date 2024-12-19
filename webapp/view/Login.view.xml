@@ -6,9 +6,9 @@
         <Text text="Welcome back" class="sapUiLargeMarginTop sapUiLargeMarginBottom sapUiTitleStyle" />
         <VBox class="sapUiSmallMarginTop">
             <Label text="Email address" class="sapUiSmallMarginBottom" />
-            <Input id="username" placeholder="Enter your email" class="sapUiSmallMarginBottom" />
+            <Input id="username" name="email" placeholder="Enter your email" class="username" />
             <Label text="Password" class="sapUiSmallMarginBottom" />
-            <Input id="password" type="Password" placeholder="Enter your password" class="sapUiSmallMarginBottom" />
+            <Input id="password" name="password" placeholder="Enter your password" class="password" />
         </VBox>
         <CheckBox text="Remember for 30 days" class="sapUiSmallMarginTop" />
         <Button text="Sign in" type="Emphasized" press="onLogin" class="sapUiSmallMarginTop" />

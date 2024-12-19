@@ -128,7 +128,8 @@ sap.ui.define(
 				const oDialog = this.byId("createProduct");
 				this.byId("productIdInput").setValue(oContext.ID);
 				this.byId("productNameInput").setValue(oContext.Name);
-				this.byId("productPriceInput").setValue(oContext.Description);
+				this.byId("productDescriptionInput").setValue(oContext.Description);
+				this.byId("productPriceInput").setValue(oContext.Price);
 			
 				this._editContextPath = oEvent.getSource().getBindingContext().getPath();
 				oDialog.open();

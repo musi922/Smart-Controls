@@ -30,7 +30,8 @@
         </customHeader>
 
         <content>
-            <IconTabBar id="mainTabBar"
+            <IconTabBar class="mainTabBar" id="mainTabBar"
+            
                         select="onTabSelect"
                         selectedKey="{view>/selectedTabKey}">
                 <items>
@@ -40,7 +41,7 @@
                     <Button text="Create Product" press="onCreateProductPress"></Button>
                     </Toolbar>
                             
-    <Table id="idTable" items="{/Products}" selectionChange="handleSelectionChange" mode="SingleSelectMaster" growing="true" growingScrollToLoad="true" growingThreshold="18">
+    <Table id="idTable" class="idTable" items="{/Products}" selectionChange="handleSelectionChange" mode="SingleSelectMaster" growing="true" growingScrollToLoad="true" growingThreshold="18">
         <columns>
             <Column>
                 <Text text="ID"/>
@@ -60,9 +61,9 @@
             </Column>
         </columns>
         <items>
-            <ColumnListItem>
+            <ColumnListItem >
                 <cells>
-                <Text text="{ID}"/>
+                <Text class="id" text="{ID}"/>
                 <Text text="{Name}"/>
                 <Text text="{Description}"/>
                 <Text text="{Price}"/>
@@ -103,20 +104,20 @@
             </endButton>
         </Dialog>
 
-<Dialog id="createProduct" title="Create a Product" class="sapUiLargePadding">
+<Dialog id="createProduct"  title="Create a Product" class="createProduct">
     <VBox>
        <form:SimpleForm>
     <Label text="Product Id"/>
-    <Input id="productIdInput" required="true" valueState="None" valueStateText="Please enter a product ID"/>
+    <Input id="productIdInput" name="ID" required="true" valueState="None" valueStateText="Please enter a product ID"/>
     
     <Label text="Product Name"/>
-    <Input id="productNameInput" required="true" valueState="None" valueStateText="Please enter a product name"/>
+    <Input id="productNameInput" name="Name" required="true" valueState="None" valueStateText="Please enter a product name"/>
     
     <Label text="Description"/>
-    <Input id="productDescriptionInput" required="true" valueState="None" valueStateText="Please enter a description"/>
+    <Input id="productDescriptionInput" name="Description" required="true" valueState="None" valueStateText="Please enter a description"/>
     
     <Label text="Price"/>
-    <Input id="productPriceInput" type="Number" required="true" valueState="None" valueStateText="Please enter a valid price"/>
+    <Input id="productPriceInput" name="Price" type="Number" required="true" valueState="None" valueStateText="Please enter a valid price"/>
     
    
       </form:SimpleForm>
