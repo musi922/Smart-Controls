@@ -137,16 +137,48 @@ sap.ui.define(
 
 			
 			onCreateProduct: function () {
+				const oView = this.getView();
+				const inputs = [
+					oView.byId("productIdInput"),
+					oView.byId("productNameInput"),
+					oView.byId("productDescriptionInput"),
+					oView.byId("productPriceInput"),
+				];
+
+				let isValid = true;
+
+				inputs.forEach((oInput) => {
+					const value = oInput.getValue();
+					const id = oInput.getId();
+
+					if (!value) {
+						isValid = false;
+						oInput.setValueState("Error");
+						oInput.setValueStateText("This field is required.");
+					} else if (id === "productNameInput" && (!/^[a-zA-Z\s]*$/.test(value) || value.length > 20)) {
+						isValid = false;
+						oInput.setValueState("Error");
+						oInput.setValueStateText("Name must be alphabetic and not exceed 20 characters.");
+					} else if (id === "productPriceInput" && isNaN(parseFloat(value))) {
+						isValid = false;
+						oInput.setValueState("Error");
+						oInput.setValueStateText("Please enter a valid price.");
+					} else {
+						oInput.setValueState("None");
+					}
+				});
+				if (!isValid) {
+					MessageBox.error("Please fill in all required fields with valid values.");
+					return;
+				}
+
 				const oModel = this.getView().getModel();
 				const ID = this.byId("productIdInput").getValue();
 				const Name = this.byId("productNameInput").getValue();
 				const Description = this.byId("productDescriptionInput").getValue();
 				const Price = this.byId("productPriceInput").getValue();
 
-				if (!ID || !Name || !Description || Price <= 0 ) {
-					MessageBox.error("Please fill in all required fields with valid values.");
-					return;
-				}
+				
 			
 				const newProduct = { ID, Name, Description, Price };
 			
