@@ -12,7 +12,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     controllerName="lazyloading.controller.Suppliers"
 >
-    <VBox>
+    <VBox class="SuppliersPage">
         <FlexBox
             id="flexBox1"
             width="20rem"

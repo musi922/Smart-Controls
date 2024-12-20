@@ -2,7 +2,7 @@
     xmlns="sap.m" 
     xmlns:mvc="sap.ui.core.mvc" 
     controllerName="lazyloading.controller.Main">
-   <HBox >
+   <HBox class="CustomersPage">
    <f:Card
 	class="sapUiMediumMargin"
 	width="300px">

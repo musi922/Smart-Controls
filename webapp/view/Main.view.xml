@@ -78,11 +78,11 @@
     </Table>
                     </IconTabFilter>
 
-                    <IconTabFilter id="customersTab" text="Customers" key="Customers">
+                    <IconTabFilter id="customersTab" class="Customers" text="Customers" key="Customers">
 					<mvc:XMLView viewName="lazyloading.view.Cards"/>                   
                      </IconTabFilter>
 
-                    <IconTabFilter id="suppliersTab" text="Suppliers" key="Suppliers">
+                    <IconTabFilter id="suppliersTab" class="Suppliers" text="Suppliers" key="Suppliers">
                     <mvc:XMLView viewName="lazyloading.view.Suppliers"></mvc:XMLView>
                     </IconTabFilter>
 
